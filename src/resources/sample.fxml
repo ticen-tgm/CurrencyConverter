@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.WebView?>
+<GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="center" hgap="10" prefHeight="600.0" prefWidth="900.0"
+          vgap="10" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="controller.Controller">
+    <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0"/>
+        <RowConstraints maxHeight="400.0" minHeight="30.0" prefHeight="40.0" vgrow="ALWAYS"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0"/>
+    </rowConstraints>
+    <columnConstraints>
+        <ColumnConstraints minWidth="10.0" prefWidth="100.0"/>
+        <ColumnConstraints minWidth="10.0" prefWidth="100.0"/>
+        <ColumnConstraints minWidth="10.0" prefWidth="100.0"/>
+        <ColumnConstraints minWidth="10.0" prefWidth="100.0"/>
+        <ColumnConstraints minWidth="10.0" prefWidth="100.0"/>
+    </columnConstraints>
+    <children>
+        <TextField fx:id="amountTextField" promptText="Betrag"/>
+        <TextField fx:id="currencyTextField" promptText="Waehrung" GridPane.columnIndex="1"/>
+        <TextField fx:id="targetCurrencyTextField" promptText="Zielwaehrung" GridPane.columnIndex="2"/>
+        <Button fx:id="convertButton" mnemonicParsing="false" onAction="#convert" text="Umrechnen"
+                GridPane.columnIndex="3"/>
+        <CheckBox fx:id="liveDataCheckBox" mnemonicParsing="false" onAction="#liveDataChanger" selected="true"
+                  text="Live-data" GridPane.columnIndex="4"/>
+        <Button fx:id="exitButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#exit"
+                text="Exit" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        <Button fx:id="resetButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#reset"
+                text="Reset" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+        <WebView fx:id="webView" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="5" GridPane.rowIndex="1"/>
+    </children>
+</GridPane>
