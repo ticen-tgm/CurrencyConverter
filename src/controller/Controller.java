@@ -16,6 +16,11 @@ import javafx.stage.Stage;
 
 import java.util.Arrays;
 
+/**
+ * @author Ata Icen
+ * Takes the GUI elemts from the fxml and binds it into this file.
+ */
+
 public class Controller extends Application {
     @FXML
     TextField amountTextField;
@@ -37,7 +42,7 @@ public class Controller extends Application {
     Data strategy = new OnlineData();
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("../resources/sample.fxml"));
         primaryStage.setTitle("Currency Converter");
         primaryStage.setScene(new Scene(root, 600, 600));
@@ -48,11 +53,14 @@ public class Controller extends Application {
         launch(args);
     }
 
-   @FXML
-   public void initialize(){
-        webEngine=webView.getEngine();
-   }
+    @FXML
+    public void initialize() {
+        webEngine = webView.getEngine();
+    }
 
+    /**
+     * converts the two or more input currencys to the right value in the "Betrag" field
+     */
     public void convert(ActionEvent actionEvent) {
         webEngine.loadContent(
                 strategy.get_rates(
@@ -63,14 +71,27 @@ public class Controller extends Application {
         );
     }
 
+
+    /**
+     * changes the database source (online or offlne)
+     */
     public void liveDataChanger(ActionEvent actionEvent) {
-        if(liveDataCheckBox.isSelected()) strategy= new OnlineData();
-        //else if(!liveDataCheckBox.isSelected()) strategy = new OfflineData();
+        if (liveDataCheckBox.isSelected()) strategy = new OnlineData();
+        else if (!liveDataCheckBox.isSelected()) strategy = new OfflineData();
     }
 
+
+    /**
+     * exits the programm
+     */
     public void exit(ActionEvent actionEvent) {
+        Stage stage = (Stage) exitButton.getScene().getWindow();
+        stage.close();
     }
 
+    /**
+     * resets the whole window (except fot the live or offline data)
+     */
     public void reset(ActionEvent actionEvent) {
         currencyTextField.clear();
         targetCurrencyTextField.clear();
