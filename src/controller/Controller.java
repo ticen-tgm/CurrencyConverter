@@ -34,7 +34,7 @@ public class Controller extends Application {
     @FXML
     WebView webView;
     WebEngine webEngine;
-    Data strategy;
+    Data strategy = new OnlineData();
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -64,7 +64,8 @@ public class Controller extends Application {
     }
 
     public void liveDataChanger(ActionEvent actionEvent) {
-
+        if(liveDataCheckBox.isSelected()) strategy= new OnlineData();
+        //else if(!liveDataCheckBox.isSelected()) strategy = new OfflineData();
     }
 
     public void exit(ActionEvent actionEvent) {
